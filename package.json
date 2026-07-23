@@ -1,0 +1,53 @@
+{
+  "name": "omni-ai-backend",
+  "version": "0.0.1",
+  "description": "",
+  "main": "src/main.ts",
+  "scripts": {
+    "start": "tsx src/main.ts",
+    "dev": "tsx watch src/main.ts",
+    "typecheck": "tsc",
+    "postgres:upgrade": "drizzle-kit push --config drizzle.config.ts",
+    "postgres:reset": "tsx src/modules/postgres/reset.ts",
+    "postgres:seed": "tsx src/modules/postgres/seed.ts",
+    "valkey:reset": "tsx src/modules/valkey/reset.ts",
+    "mongo:reset": "tsx src/modules/mongo/reset.ts",
+    "mongo:seed": "tsx src/modules/mongo/seed.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/donaldturinglee/omni-ai-backend.git"
+  },
+  "keywords": [],
+  "author": "donaldturinglee <donaldturinglee@gmail.com>",
+  "license": "MIT",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/donaldturinglee/omni-ai-backend/issues"
+  },
+  "homepage": "https://github.com/donaldturinglee/omni-ai-backend#readme",
+  "dependencies": {
+    "argon2": "^0.45.0",
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "drizzle-orm": "^0.45.2",
+    "express": "^5.2.1",
+    "helmet": "^8.3.0",
+    "iovalkey": "^0.3.3",
+    "jose": "^6.2.3",
+    "mongodb": "^7.5.0",
+    "pg": "^8.22.0",
+    "winston": "^3.19.0",
+    "winston-daily-rotate-file": "^5.0.0",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.6",
+    "@types/node": "^26.1.1",
+    "@types/pg": "^8.20.0",
+    "drizzle-kit": "^0.31.10",
+    "tsx": "^4.23.1",
+    "typescript": "^7.0.2"
+  }
+}

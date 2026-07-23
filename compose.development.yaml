@@ -1,0 +1,45 @@
+services:
+    postgres:
+        image: postgres:alpine
+        container_name: omni_ai_backend_postgres
+        restart: unless-stopped
+        environment:
+            POSTGRES_USER: ${POSTGRES_USER}
+            POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+            POSTGRES_DB: ${POSTGRES_DATABASE}
+        ports:
+            - "5432:5432"
+        volumes:
+            - postgres_data:/var/lib/postgresql
+
+    valkey:
+        image: valkey/valkey:alpine
+        container_name: omni_ai_backend_valkey
+        restart: unless-stopped
+        command: valkey-server --requirepass ${VALKEY_PASSWORD}
+        environment:
+            VALKEY_PASSWORD: ${VALKEY_PASSWORD}
+            VALKEY_DATABASE: ${VALKEY_DATABASE}
+        ports:
+            - "6379:6379"
+        volumes:
+            - valkey_data:/data
+
+    mongo:
+        image: mongo:noble
+        container_name: omni_ai_backend_mongo
+        restart: unless-stopped
+        environment:
+            MONGO_INITDB_ROOT_USERNAME: ${MONGO_USER}
+            MONGO_INITDB_ROOT_PASSWORD: ${MONGO_PASSWORD}
+        ports:
+            - "27017:27017"
+        volumes:
+            - mongo_data:/data/db
+
+volumes:
+    postgres_data:
+    valkey_data:
+    mongo_data:
+
+name: omni_ai_backend
